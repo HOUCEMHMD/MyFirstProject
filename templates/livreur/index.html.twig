@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livreur index{% endblock %}
+
+{% block body %}
+
+<section class="row" style="width: 78%;
+    margin-left: 20.5%;">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="bug-list-search-content">
+                    <form method="get" action="">
+                        <div class="position-relative">
+                            <input type="search" id="search-contacts" name="search_input"
+                                value="{{ app.request.get('search_input')}}" class="form-control"
+                                placeholder="Recherche avancée...">
+                            <div class="form-control-position">
+                                <i class="fa fa-search text-size-base text-muted la-rotate-270"></i>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="card" style="width: 76%;
+        margin-left: 21.5%;">
+    <div class="card-header">
+        <h4>Liste des liverurs</h4>
+
+        <a class="btn btn-primary" style="float:right;" href="{{ path('livreur_new') }}">
+            nouvel enregistrement
+        </a>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>email</th>
+                    <th>Disponibilite</th>
+                    <th>Cin</th>
+                    <th>Numtlf</th>
+                    <th>actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for livreur in livreurs %}
+                <tr>
+                    <td>{{ livreur.id }}</td>
+                    <td>{{ livreur.nom }}</td>
+                    <td>{{ livreur.prenom }}</td>
+                    <td>{{ livreur.email }}</td>
+                    <td>{{ livreur.disponibilite ? 'Yes' : 'No' }}</td>
+                    <td>{{ livreur.cin }}</td>
+                    <td>{{ livreur.numtlf }}</td>
+                    <td style="float: left;">
+                        <a class="btn btn-primary" href="{{ path('livreur_show', {'id': livreur.id}) }}">
+                            show
+                        </a>
+                        <a class="btn btn-success" href="{{ path('livreur_edit', {'id': livreur.id}) }}">
+                            edit
+                        </a>
+
+                    </td>
+
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="navigation pull-right">
+            {{ knp_pagination_render(livreurs) }}
+        </div>
+     
+      
+    </div>
+</div>
+
+{% endblock %}

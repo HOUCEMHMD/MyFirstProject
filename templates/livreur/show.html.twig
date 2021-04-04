@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livreur{% endblock %}
+
+{% block body %}
+<div class="card" style="width: 76%;
+    margin-left: 22%;
+    margin-top: 7%;">
+    <div class="card-header">
+        <h1>Livreur</h1>
+        {{ include('livreur/_delete_form.html.twig') }}
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ livreur.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ livreur.nom }}</td>
+                </tr>
+                <tr>
+                    <th>Prenom</th>
+                    <td>{{ livreur.prenom }}</td>
+                </tr>
+                <tr>
+                    <th>email</th>
+                    <td>{{ livreur.email }}</td>
+                </tr>
+                <tr>
+                    <th>Disponibilite</th>
+                    <td>{{ livreur.disponibilite ? 'Yes' : 'No' }}</td>
+                </tr>
+                <tr>
+                    <th>Cin</th>
+                    <td>{{ livreur.cin }}</td>
+                </tr>
+                <tr>
+                    <th>Numtlf</th>
+                    <td>{{ livreur.numtlf }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}
+

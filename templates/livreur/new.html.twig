@@ -1,0 +1,169 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Livreur{% endblock %}
+
+{% block body %}
+{{ form_start(form, {'attr' :{'class' : 'form-disable'}}) }}
+<div class="card" style="width: 76%;
+    margin-left: 22%;
+    margin-top: 7%;">
+    <div class="card-header">
+        <h1>Create new Livreur</h1>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group m-b-40">
+
+                    <label>Nom</label> : <span class=" text-danger">*</span>
+
+                    <input type="text" class="form-control" name="{{ form.nom.vars.full_name}}"
+                        value="{{ form.nom.vars.value }}" autofocus>
+
+                    {% if not form.nom.vars.valid %}
+
+                    {% for error in form.nom.vars.errors  %}
+
+                    <span style="color:#f31313;"> {{ error.message }}</span>
+
+                    {% endfor %}
+
+                    {% endif %}
+
+                    {% do form.nom.setRendered %}
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group m-b-40">
+
+                    <label>Prénom</label> : <span class=" text-danger">*</span>
+
+                    <input type="text" class="form-control" name="{{ form.prenom.vars.full_name}}"
+                        value="{{ form.prenom.vars.value }}" autofocus>
+
+                    {% if not form.prenom.vars.valid %}
+
+                    {% for error in form.prenom.vars.errors  %}
+
+                    <span style="color:#f31313;"> {{ error.message }}</span>
+
+                    {% endfor %}
+
+                    {% endif %}
+
+                    {% do form.prenom.setRendered %}
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group m-b-40">
+
+                    <label>Email</label> : <span class=" text-danger">*</span>
+
+                    <input type="text" class="form-control" name="{{ form.email.vars.full_name}}"
+                        value="{{ form.email.vars.value }}" autofocus>
+
+                    {% if not form.email.vars.valid %}
+
+                    {% for error in form.email.vars.errors  %}
+
+                    <span style="color:#f31313;"> {{ error.message }}</span>
+
+                    {% endfor %}
+
+                    {% endif %}
+
+                    {% do form.email.setRendered %}
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 ">
+
+                <div class="form-group m-b-40">
+
+                    <label>Cin</label> : <span class=" text-danger">*</span>
+
+                    <input type="number" class="form-control" name="{{ form.cin.vars.full_name}}"
+                        value="{{ form.cin.vars.value }}" autofocus>
+
+                    {% if not form.cin.vars.valid %}
+
+                    {% for error in form.cin.vars.errors  %}
+
+                    <span style="color:#f31313;"> {{ error.message }}</span>
+
+                    {% endfor %}
+
+                    {% endif %}
+
+                    {% do form.cin.setRendered %}
+
+                </div>
+
+            </div>
+            <div class="col-md-6 ">
+
+                <div class="form-group m-b-40">
+
+                    <label>N Tél</label> : <span class=" text-danger">*</span>
+
+                    <input type="number" class="form-control" name="{{ form.numtlf.vars.full_name}}"
+                        value="{{ form.numtlf.vars.value }}" autofocus>
+
+                    {% if not form.numtlf.vars.valid %}
+
+                    {% for error in form.numtlf.vars.errors  %}
+
+                    <span style="color:#f31313;"> {{ error.message }}</span>
+
+                    {% endfor %}
+
+                    {% endif %}
+
+                    {% do form.numtlf.setRendered %}
+
+                </div>
+
+            </div>
+        </div>
+        <div class="row" style="margin: 0px;margin-top: 35px;">
+
+            <div class="form-check">
+                <label>Disponibilite</label> : <span class=" text-danger">*</span>
+                <input type="checkbox" name="{{ form.disponibilite.vars.full_name}}"
+                    value="{{ form.disponibilite.vars.value }}">
+
+                {% if not form.disponibilite.vars.valid %}
+
+                {% for error in form.disponibilite.vars.errors  %}
+
+                <span style="color:#f31313;"> {{ error.message }}</span>
+
+                {% endfor %}
+
+                {% endif %}
+
+                {% do form.disponibilite.setRendered %}
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row>
+        <div class=" col-md-12" style="float: right;margin-right: 25px;">
+
+    <a class="btn btn-danger waves-effect pull-left text-white" href="">Annuler
+    </a>
+    {{ form_widget(form.save, {'attr' :{'class':'btn btn-success pull-right'}})}}
+
+</div>
+</div>
+
+{{ include('livreur/_form.html.twig') }}
+{{ form_end(form) }}
+{% endblock %}
